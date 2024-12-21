@@ -8,13 +8,7 @@ VAR_SETTING := -X "$(PACKAGE_NAME)/constant.Version=$(VERSION)" -X "$(PACKAGE_NA
 GOBUILD = CGO_ENABLED=0 go build -trimpath -ldflags '-s -w -buildid= $(VAR_SETTING)' \
 		-o $(BUILD_DIR)
 
-PLATFORM_LIST = \
-	darwin-amd64 \
-	darwin-arm64 \
-	linux-amd64 \
-	linux-arm64 \
-	windows-amd64 \
-	windows-arm64
+PLATFORM_LIST = freebsd-amd64
 	
 
 zip_release = $(addsuffix .zip, $(PLATFORM_LIST))
