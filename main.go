@@ -270,10 +270,10 @@ func showMainMenu() {
 	fmt.Printf("\033[1;36m%s\033[0m %s\n", "1.", "查看实例")
 	fmt.Printf("\033[1;36m%s\033[0m %s\n", "2.", "创建实例")
 	fmt.Printf("\033[1;36m%s\033[0m %s\n", "3.", "管理引导卷")
-	fmt.Print("\n请输入序号进入相关操作: ")
+	// fmt.Print("\n请输入序号进入相关操作: ")
 	var input string
 	var num int
-	fmt.Scanln(&input)
+	input = os.Args[1] //fmt.Scanln(&input)
 	if strings.EqualFold(input, "oci") {
 		batchLaunchInstances(oracleSection)
 		showMainMenu()
@@ -841,12 +841,13 @@ func listLaunchInstanceTemplates() {
 		var input string
 		var index int
 		for {
-			fmt.Print("请输入需要创建的实例的序号: ")
-			_, err := fmt.Scanln(&input)
-			if err != nil {
-				showMainMenu()
-				return
-			}
+			// fmt.Print("请输入需要创建的实例的序号: ")
+			// _, err := fmt.Scanln(&input)
+			// if err != nil {
+			// 	showMainMenu()
+			// 	return
+			// }
+			input = os.Args[2]
 			index, _ = strconv.Atoi(input)
 			if 0 < index && index <= len(instanceSections) {
 				break
